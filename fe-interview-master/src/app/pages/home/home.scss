@@ -1,6 +1,11 @@
 @import "@app/colors";
 @import "@app/mixins";
 
+// Font (Poppins)
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+
 .app-home {
 	&__title {
 		text-align: center;
@@ -13,5 +18,15 @@
 		@include breakpoint("xsmall") {
 			color: $neon-green;
 		}
+	}
+
+	img {
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		padding: 5px;
+		width: 150px;
+	}
+	img.hover {
+		box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5)
 	}
 }

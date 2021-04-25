@@ -1,0 +1,9 @@
+<h1 class="header">all Games</h1>
+<a class="button" routerLink="/" routerLinkActive="active"> Back to Home </a>
+
+<div class="browse-div" *ngIf="FilteredGamesData$">
+	<a class="trending-thumb" *ngFor="let g of FilteredGamesData$ | async">
+		<!-- Game Thumbnail -->
+		<img src="{{g.thumb.url}}" alt="{{g.thumb.title}}">
+	</a>
+</div>
