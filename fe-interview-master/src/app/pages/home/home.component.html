@@ -1,9 +1,10 @@
-<h1 class="app-home__title">Home</h1>
+<h1 class="header">Trending Games</h1>
 
-<div class="app-home__content">
-	<div class="app-home__json-data-container">
-		<code class="app-home__json-data">
-			{{gamesData$ | async | json}}
-		</code>
-	</div>
+<div class="trending-div" *ngIf="trendingGamesData$">
+	<a class="trending-thumb" *ngFor="let g of trendingGamesData$ | async">
+		<!-- Game Thumbnail -->
+		<img src="{{g.thumb.url}}" alt="{{g.thumb.title}}">
+	</a>
+
+	<a class="button" routerLink="browse" routerLinkActive="active"> View all games! </a>
 </div>
