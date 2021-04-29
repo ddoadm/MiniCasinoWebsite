@@ -1,0 +1,26 @@
+<p>game works!</p>
+
+<div *ngIf="game; else noGameElseBlock">
+    <!-- Game Thumbnail -->
+    <span>
+        <a href="{{game.startUrl}}" target="_blank">
+            <img *ngIf="game.thumb; else noThumbElseBlock" src="{{game.thumb.url}}" alt="{{game.thumb.title}}">
+            
+            <ng-template #noThumbElseBlock>
+                <div class="thumb-background">
+                    <h2>{{ game.title }}</h2>
+                </div>
+            </ng-template>
+        </a>
+    </span>
+
+    <a class="button" href="{{game.startUrl}}" target="_blank">Play for fun!</a> 
+</div>
+<ng-template #noGameElseBlock>
+    <div class="thumb-background">
+        <h1>Game not found!</h1>
+        
+        <!-- All Games -->
+        <a class="button" routerLink="browse/all" routerLinkActive="active"> View all games! </a>
+    </div>
+</ng-template>

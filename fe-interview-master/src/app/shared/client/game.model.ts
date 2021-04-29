@@ -1,6 +1,12 @@
 export interface Game {
-	id: number;
+	id: string;
 	slug: string;
 	title: string;
 	tag: string;
+	thumb: {
+		title: string,
+		url: string
+	};
+	providerName: string;
+	startUrl: string;
 }

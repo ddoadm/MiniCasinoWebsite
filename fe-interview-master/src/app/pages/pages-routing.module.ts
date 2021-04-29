@@ -2,11 +2,13 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 import { HomeComponent } from "./home/home.component";
-import { BrowseComponent } from "./browse/browse.component";
+import { BrowseProviderComponent } from "./browse-provider/browse-provider.component";
+import { GameComponent } from "./game/game.component";
 
 const ROUTES: Routes = [
 	{ path: "", component: HomeComponent },
-	{ path: "browse", component: BrowseComponent }
+	{ path: "browse/:id", component: BrowseProviderComponent },
+	{ path: "game/:slug", component: GameComponent }
 ];
 
 @NgModule({

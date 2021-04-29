@@ -1,0 +1,25 @@
+<div *ngIf="gameFilterParams.selectedProvider === 'all';then main else provider">here is ignored</div>    
+<ng-template #main><h1 class="header">All Games</h1></ng-template>
+<ng-template #provider><h1 class="header">All Games by {{gameFilterParams.selectedProvider}}</h1></ng-template>
+
+<a class="button" routerLink="/" routerLinkActive="active"> Back to Home </a>
+
+<form>
+	<!-- Search / Filter -->
+	<label class="field-placeholder" for="inputSearch">Search</label>
+	<input class="form-control" type="text" name="inputSearch" id="SearchBox"
+	(keyup)="onKeyUpEvent($event)">	
+
+	<!-- Filter by provider -->
+	<label for="providerSelect">Providers</label>
+  	<select id="ProviderSelect" name="providerSelect" [(ngModel)]="gameFilterParams.selectedProvider" (ngModelChange)="selectedProviderChange($event)">	
+		<option value="all"> Show all providers </option>	
+		<option *ngFor="let g of providers$ | async" [value]="g.path" >{{g.name}}</option>
+  	</select>
+</form>
+
+<!-- Games -->
+<div class="browse-div" *ngIf="gamesData$">
+	<app-thumb *ngFor="let game of gamesData$ | async" [game]="game"></app-thumb>  	
+</div>
+ 
