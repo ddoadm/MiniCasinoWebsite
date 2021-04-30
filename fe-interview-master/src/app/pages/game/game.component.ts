@@ -37,8 +37,11 @@ export class GameComponent implements OnInit {
 
     ngOnInit(): void {    
       // Filter Games
-      this.slug = this.route.snapshot.paramMap.get("slug") as string;
-      this.gameFilterSubject.next(this.slug);
+      // subscribe to the parameters observable
+      this.route.paramMap.subscribe(params => {
+        this.slug = params.get("slug") as string;
+        this.gameFilterSubject.next(this.slug);
+      })
     }
 
     ngOnDestroy() {
