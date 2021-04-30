@@ -82,7 +82,18 @@ export class GameMockClient {
 		catchError(this.handleError));
 	}
 
-	getGameByIds$(ids: string[]): Observable<Game[]> {
+	getGameByIds$(ids: string[]): Observable<(Game | undefined)[]> {
+		return this.getAll$().pipe( 
+			map((games:Game[]) => { 
+				return [(games.find((game:Game) => game.id == ids[0])),
+				(games.find((game:Game) => game.id == ids[1])),
+				(games.find((game:Game) => game.id == ids[2])),
+				(games.find((game:Game) => game.id == ids[3])),
+				(games.find((game:Game) => game.id == ids[4]))]
+			})
+		)
+		//return result;
+		/*
 		return this.getAll$().pipe( 
 			map((games:Game[]) => games.filter(
 				(game:Game) => {
@@ -92,6 +103,7 @@ export class GameMockClient {
 			) 
 		),
 		catchError(this.handleError));
+		*/
 	}
 
 	getProviders$(): Observable<Provider[]> {

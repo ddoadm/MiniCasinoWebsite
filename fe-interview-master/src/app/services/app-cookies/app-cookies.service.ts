@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
-import { Observable, of } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { CookieService } from "ngx-cookie-service";
+import { Observable, of } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class AppCookiesService {
   // cookie name: last-five-games
   private cookieName: string;
 
   constructor(private cookieService:CookieService) {  
-    this.cookieName = 'last-five-games';
+    this.cookieName = "last-five-games"; // hardcoded cookie name
   }
 
   AddGameInCookie(id:string|undefined) {
@@ -20,7 +20,7 @@ export class AppCookiesService {
     // Get cookie 
     var cookieValue = this.cookieService.get(this.cookieName);
     // Parse
-    if(cookieValue != '') { // Empty cookie
+    if(cookieValue != "") { // Empty cookie
       // Parse
       cookieParsedValue = JSON.parse(cookieValue);
       // Check if already in list
@@ -41,7 +41,7 @@ export class AppCookiesService {
     // Get cookie 
     var cookieValue = this.cookieService.get(this.cookieName);
     // Parse
-    if(cookieValue != '') { // Empty cookie
+    if(cookieValue != "") { // Empty cookie
       var cookieParsedValue = JSON.parse(cookieValue);
       return cookieParsedValue;
     }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subject, Subscription } from "rxjs";
 import { GameMockClient, Game } from "../../shared";
-import { AppCookiesService } from '../../services/app-cookies.service';
+import { AppCookiesService } from '../../services/app-cookies/app-cookies.service';
 
 @Component({
   selector: 'app-game',

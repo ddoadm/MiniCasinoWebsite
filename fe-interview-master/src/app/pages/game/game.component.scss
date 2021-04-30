@@ -1,0 +1,24 @@
+@import "@app/colors";
+@import "@app/mixins";
+
+.header {
+    padding: 0;
+}
+.sub-header {
+    padding-bottom: 1rem;
+}
+
+.button {
+    background-color: $blue-darker;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+    &:hover {
+        background-color: $blue-darkest;
+    }
+}

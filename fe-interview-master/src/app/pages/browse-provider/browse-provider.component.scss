@@ -1,0 +1,28 @@
+@import "@app/colors";
+@import "@app/mixins";
+
+.header { 
+    float:left;
+}
+.browse-form {
+    float: right;
+    .form-group {
+        float: right;
+        label, input, select {
+            margin-left: 1rem;
+            margin-bottom: 1rem;
+        }
+    }    
+}
+
+/* Small screens */
+@include breakpoint("small") {
+    .browse{
+        .browse-form {
+            float: left;
+            .form-group {
+                float: left;
+            }               
+        }
+    }
+}

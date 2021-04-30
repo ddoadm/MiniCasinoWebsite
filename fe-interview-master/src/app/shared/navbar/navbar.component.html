@@ -3,10 +3,25 @@
         <i class="fas fa-bars"></i>
     </a>
 </span>
-<nav id="menu" class="nav">
-    <a href="#" class="close" onclick="closeSideMenu()">
-        <fa-icon [icon]="faCoffee"></fa-icon>
-    </a>
-    <a routerLink="/" routerLinkActive="active"> Home </a>
-    <a routerLink="browse/all" routerLinkActive="active"> Browse </a>
+<nav id="menu" class="navbar">
+    <ul class="navbar-nav">
+        <li class="logo">
+            <a href="#" class="nav-link">
+                <fa-icon [icon]="faWater"></fa-icon>
+                <span class="link-text">Rivertech Casino</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="/" routerLinkActive="active" class="nav-link"> 
+                <fa-icon [icon]="faHome"></fa-icon>
+                <span class="link-text">Home</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="browse/all" routerLinkActive="active"  class="nav-link"> 
+                <fa-icon [icon]="faGamepad"></fa-icon>
+                <span class="link-text">Browse</span>
+            </a>
+        </li>
+    </ul>
 </nav>

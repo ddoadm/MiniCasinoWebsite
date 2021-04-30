@@ -1,19 +1,17 @@
-<p>game works!</p>
-
-<div *ngIf="game; else noGameElseBlock">
-    <!-- Game Thumbnail -->
-    <span>
-        <a href="{{game.startUrl}}" target="_blank">
-            <img *ngIf="game.thumb; else noThumbElseBlock" src="{{game.thumb.url}}" alt="{{game.thumb.title}}">
+<div class="game-highlights" *ngIf="game; else noGameElseBlock">
+    <h1 class=header>{{game.title}}</h1>
+    <h2 class=sub-header>By: {{game.providerName}}</h2>
+    <div class="game-card">
+        <a [routerLink]="['/game', game.slug]" routerLinkActive="active" class="game-link">
+            <img class="card-background" *ngIf="game.thumb; else noThumbElseBlock" src="{{game.thumb.url}}" alt="{{game.thumb.title}}">
             
             <ng-template #noThumbElseBlock>
-                <div class="thumb-background">
-                    <h2>{{ game.title }}</h2>
+                <div class="card-default-background">
+                    <h2 class="card-title">{{ game.title }}</h2>
                 </div>
             </ng-template>
         </a>
-    </span>
-
+    </div>
     <a class="button" href="{{game.startUrl}}" target="_blank">Play for fun!</a> 
 </div>
 <ng-template #noGameElseBlock>

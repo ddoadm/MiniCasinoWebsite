@@ -5,7 +5,7 @@ import { BrowseProviderComponent } from './browse-provider/browse-provider.compo
 import { FormsModule } from '@angular/forms';
 import { AppPagesRoutingModule } from "./pages-routing.module";
 import { GameComponent } from './game/game.component';
-import { ThumbComponent } from '../shared/thumb/thumb.component';
+import { ThumbComponent } from "../shared/thumb/thumb.component";
 //import { AppCookiesService } from '../services/app-cookies.service';
 
 const COMPONENTS = [
@@ -19,16 +19,17 @@ const COMPONENTS = [
 		FormsModule
 	],
 	declarations: [
-		...COMPONENTS, 
-		BrowseProviderComponent,
+		...COMPONENTS,
+		ThumbComponent,
 		GameComponent,
-		ThumbComponent
+		BrowseProviderComponent
 	],
 	providers: [
 		//AppCookiesService
 	],
 	exports: [
-		...COMPONENTS
+		...COMPONENTS,
+		ThumbComponent
 	]
 })
 export class AppPagesModule {

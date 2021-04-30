@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AppCookiesService } from '../../services/app-cookies.service';
+import { AppCookiesService } from '../../services/app-cookies/app-cookies.service';
 import { GameMockClient, Game } from "../../shared";
 import { ThumbComponent } from "../thumb/thumb.component";
 
@@ -11,7 +11,7 @@ import { ThumbComponent } from "../thumb/thumb.component";
 })
 export class FooterComponent implements OnInit {
   ids: string[];
-  gamesData$: Observable<Game[]>;
+  gamesData$: Observable<(Game|undefined)[]>;
 
   constructor(gameMockClient: GameMockClient, appCookiesService:AppCookiesService) {
     this.ids = appCookiesService.GetLastFiveCookie();

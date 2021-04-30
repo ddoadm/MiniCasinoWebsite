@@ -1,32 +1,39 @@
 @import "@app/colors";
 @import "@app/mixins";
 
-// Font (Poppins)
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.hero-image {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../assets/images/hero-background.jpg");
+	height: 50vh;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	margin-bottom: 1rem;
 
-
-
-.app-home {
-	&__title {
+	.hero-text {
 		text-align: center;
-	}
+		position: absolute;
+		// Center
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: white;
+		font-size: 2rem;
 
-	&__json-data-container {
-		background-color: $black;
-		color: $white;
-
-		@include breakpoint("xsmall") {
-			color: $neon-green;
-		}
-	}
-
-	img {
-		border: 1px solid #ddd;
-		border-radius: 4px;
-		padding: 5px;
-		width: 150px;
-	}
-	img.hover {
-		box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5)
+		.button {
+			margin-top:2rem;
+			text-decoration: none;
+			border: none;
+			outline: 0;
+			display: inline-block;
+			padding: 10px 25px;
+			color: $body;
+			background-color: $blue;
+			text-align: center;
+			cursor: pointer;
+			&:hover {
+				background-color: $blue-darker;
+			}
+		} 
 	}
 }

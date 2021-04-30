@@ -1,18 +1,33 @@
 <div>
+	<!-- HERO -->
+	<div class="hero-image">
+		<div class="hero-text">
+		  <h1>Nigel Cuschieri</h1>
+		  <p>Rivertech Casino</p>
+		  <a class="button" href="https://www.linkedin.com/in/nigel-cuschieri-84744811a/" target="_blank">Hire me</a>
+		</div>
+	</div>
+
 	<!-- Trending Games -->
-	<div class="trending-div" *ngIf="trendingGamesData$">
+	<div class="game-highlights trending" *ngIf="trendingGamesData$">
 		<h1 class="header">Trending Games</h1>
-		<ul class="game-thumbs-ul">
+		<ul class="game-thumbs">
 			<app-thumb *ngFor="let game of trendingGamesData$ | async" [game]="game"></app-thumb>  
+			<!-- All Games -->
+			<a class="button" routerLink="browse/all" routerLinkActive="active"> 
+				<span> View all games! </span> 
+			</a>
 		</ul>
 	</div>
 	<!-- Hot Games -->
-	<div class="hot-div" *ngIf="hotGamesData$">
+	<div class="game-highlights hot" *ngIf="hotGamesData$">
 		<h1 class="header">Hot Games</h1>
-		<ul class="game-thumbs-ul">
+		<ul class="game-thumbs">
 			<app-thumb *ngFor="let game of hotGamesData$ | async" [game]="game"></app-thumb>  
+			<!-- All Games -->
+			<a class="button" routerLink="browse/all" routerLinkActive="active"> 
+				<span> View all games! </span>
+			</a>
 		</ul>
 	</div>
-	<!-- All Games -->
-	<a class="button" routerLink="browse/all" routerLinkActive="active"> View all games! </a>
 </div>

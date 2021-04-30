@@ -1,23 +1,29 @@
-<div *ngIf="gameFilterParams.selectedProvider === 'all';then main else provider">here is ignored</div>    
-<ng-template #main><h1 class="header">All Games</h1></ng-template>
-<ng-template #provider><h1 class="header">All Games by {{gameFilterParams.selectedProvider}}</h1></ng-template>
 
-<form>
-	<!-- Search / Filter -->
-	<label class="field-placeholder" for="inputSearch">Search</label>
-	<input class="form-control" type="text" name="inputSearch" id="SearchBox"
-	(keyup)="onKeyUpEvent($event)">	
+<!-- Browse -->
+<div class="game-highlights browse" *ngIf="gamesData$">
+	<div *ngIf="gameFilterParams.selectedProvider === 'all';then main else provider">here is ignored</div>    
+	<ng-template #main><h1 class="header">All Games</h1></ng-template>
+	<ng-template #provider><h1 class="header">Games by {{gameFilterParams.selectedProvider}}</h1></ng-template>
 
-	<!-- Filter by provider -->
-	<label for="providerSelect">Providers</label>
-  	<select id="ProviderSelect" name="providerSelect" [(ngModel)]="gameFilterParams.selectedProvider" (ngModelChange)="selectedProviderChange($event)">	
-		<option value="all"> Show all providers </option>	
-		<option *ngFor="let g of providers$ | async" [value]="g.path" >{{g.name}}</option>
-  	</select>
-</form>
+	<form class="browse-form">
 
-<!-- Games -->
-<div class="browse-div" *ngIf="gamesData$">
-	<app-thumb *ngFor="let game of gamesData$ | async" [game]="game"></app-thumb>  	
+		<!-- Search / Filter -->
+		<div class="form-group">
+			<label class="field-placeholder" for="inputSearch">Search</label>
+			<input class="form-control" type="text" name="inputSearch" id="SearchBox"
+			(keyup)="onKeyUpEvent($event)">	
+		</div>
+		<!-- Filter by provider -->
+		<div class="form-group">
+			<label for="providerSelect">Providers</label>
+			<select id="ProviderSelect" name="providerSelect" [(ngModel)]="gameFilterParams.selectedProvider" (ngModelChange)="selectedProviderChange($event)">	
+				<option value="all"> Show all providers </option>	
+				<option *ngFor="let g of providers$ | async" [value]="g.path" >{{g.name}}</option>
+			</select>
+		</div>
+	</form>
+
+    <ul class="game-thumbs">
+        <app-thumb *ngFor="let game of gamesData$ | async" [game]="game"></app-thumb> 
+    </ul>
 </div>
- 

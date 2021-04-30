@@ -1,9 +1,9 @@
-import { Game } from '../shared/client/game.model';
+import { Game } from "../shared/client/game.model";
 
 export class AddGame {
-    static readonly type = '[GAMES] Add'
+    static readonly type = "[GAMES] Add";
 
-    constructor(public payload: Game){}
+    constructor (public payload: Game) { }
 }
 /*
 export class RemoveGames {

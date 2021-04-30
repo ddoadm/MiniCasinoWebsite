@@ -1,22 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
 import { Observable, Subject, Subscription } from "rxjs";
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { GameFilterParams } from 'src/app/shared/client/game-filter-params.model';
-import { Provider } from 'src/app/shared/client/provider.model';
+import { debounceTime, distinctUntilChanged } from "rxjs/operators";
+import { GameFilterParams } from "src/app/shared/client/game-filter-params.model";
+import { Provider } from "src/app/shared/client/provider.model";
 import { GameMockClient, Game } from "../../shared";
 import { ThumbComponent } from "../../shared/thumb/thumb.component";
 
 @Component({
-  selector: 'app-browse-provider',
-  templateUrl: './browse-provider.component.html',
-  styleUrls: ['./browse-provider.component.scss']
+  selector: "app-browse-provider",
+  templateUrl: "./browse-provider.component.html",
+  styleUrls: ["./browse-provider.component.scss"]
 })
 export class BrowseProviderComponent implements OnInit {
   gamesData$: Observable<Game[]>;
   providers$: Observable<Provider[]>;
   gameFilterSubject = new Subject<GameFilterParams>();
-  gameFilterParams:GameFilterParams = {
+  gameFilterParams: GameFilterParams = {
     searchText: "",
     selectedProvider: ""
   };
@@ -27,7 +27,7 @@ export class BrowseProviderComponent implements OnInit {
   providerFilterSubscription: Subscription;
 
   constructor(private router: Router, private route: ActivatedRoute, gameMockClient: GameMockClient) {
-		this.gamesData$ = gameMockClient.getAllFiltered$(this.gameFilterParams.searchText, this.gameFilterParams.selectedProvider);
+    this.gamesData$ = gameMockClient.getAllFiltered$(this.gameFilterParams.searchText, this.gameFilterParams.selectedProvider);
     this.providers$ = gameMockClient.getProviders$();
     
     // Pipe used to filter games
@@ -50,7 +50,7 @@ export class BrowseProviderComponent implements OnInit {
 
   ngOnInit(): void {    
     // Filter Games
-    this.gameFilterParams.selectedProvider = this.route.snapshot.paramMap.get('id') as string;
+    this.gameFilterParams.selectedProvider = this.route.snapshot.paramMap.get("id") as string;
     this.gameFilterSubject.next(this.gameFilterParams);
   }
 
@@ -62,7 +62,7 @@ export class BrowseProviderComponent implements OnInit {
   
   // Navigate to Browse-Component
   selectedProviderChange(providerPath:string){
-    this.router.navigate(['/browse', providerPath]);
+    this.router.navigate(["/browse", providerPath]);
 
     // Filter Games
     this.gameFilterParams.selectedProvider = providerPath;

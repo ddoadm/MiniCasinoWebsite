@@ -7,10 +7,10 @@ import { Game } from '../client/game.model';
   styleUrls: ['./thumb.component.scss']
 })
 export class ThumbComponent {
-  @Input('game') game: Game = <Game>{};
+  @Input('game') game: Game|undefined = <Game|undefined>{};
 
   constructor() {
     
-   }
+  }
 
 }

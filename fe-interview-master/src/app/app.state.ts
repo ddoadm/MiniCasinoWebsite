@@ -1,6 +1,6 @@
-import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { Game } from './shared/client/game.model';
-import { AddGame } from './actions/app.actions';
+import { State, Action, StateContext, Selector } from "@ngxs/store";
+import { Game } from "./shared/client/game.model";
+import { AddGame } from "./actions/app.actions";
 
 export interface AppStateModel {
     readonly games: Game[];
@@ -9,7 +9,7 @@ export interface AppStateModel {
 
 
 @State<AppStateModel>({
-    name: 'games',
+    name: "games",
     defaults: {
         hasLoaded: false,
         games: []
@@ -28,9 +28,9 @@ export class AppState {
     }
 
     @Action(AddGame)
-    add({getState, patchState} : StateContext<AppStateModel>, { payload }:AddGame){
+    add ({ getState, patchState } : StateContext<AppStateModel>, { payload }:AddGame) {
         const state = getState();
-        patchState({
+        patchState ({
             games: [...state.games, payload],
             hasLoaded: true
         });

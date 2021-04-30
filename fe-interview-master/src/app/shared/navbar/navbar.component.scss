@@ -1,84 +1,125 @@
 @import "@app/colors";
 @import "@app/mixins";
 
-.nav {
-    position: absolute;
-    background-color: white;
-    box-shadow: 0px 0px 10px var(--clr-gray300);
-    height: 100vh;
+/* Inspired by: https://www.youtube.com/watch?v=biOMz4puGt8&ab_channel=Fireship */
+.navbar {    
+    position: fixed; // Doesn't scroll
+    background-color: $navbar-background-primary;
+    z-index:10;
+    ul.navbar-nav {
+        list-style:none;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
 
-    &__expand {
-        width: 2rem;
-        height: 2rem;
-        fill: $dark;
-        background-color: white;
-        box-shadow: 0px 0px 10px var(--clr-gray300);
-        border-radius: 50%;
-        position: absolute;
-        right: -1rem;
-        top: 1rem;
-        z-index: 99;
-        cursor: pointer;
-        transform: rotatez(-180deg);
-        transition: transform 200ms ease-in-out;
-        
-        &:hover {
-            fill: $gray;
-        }
-    }
+        li.nav-item {
+            width:100%;
 
-    &__list {
-        display: flex;
-        flex-direction: column;
-    
-        &item {
-            list-style: none;
-            transition: all 200ms ease-in;
-            padding: 1rem 1.5rem;
-            border-left: 6px solid transparent;
-            cursor: pointer;
-        
-            &:first-child {
-                margin-bottom: 2rem;
-            }
-        
-            &:hover {
-                background-color: var(--clr-gray150);
-            }
-        
-            a {
+            a.nav-link {
                 display: flex;
-                gap: 1rem;
                 align-items: center;
-                color: var(--clr-gray400);
+                height: 5rem; // matches the width
+                color: $navbar-text-primary;
                 text-decoration: none;
-                font-weight: 500;
+    
+                .link-text {
+                    display: none; // Show only icon
+                    margin-left: 1rem;
+                    text-align: center;
+                }
+    
+                fa-icon {
+                    min-width: 2rem;
+                    margin: 0 1.5rem;
+                    color:$navbar-text-primary;
+                    font-size: 1.5rem;
+                }
             }
-        
-            svg {
-                fill: var(--clr-gray400);
-                width: 2rem;
+            // Navbar Link Hover
+            &:hover {
+                a.nav-link {
+                    .link-text{
+                        color: $navbar-text-secondary;
+                    }
+                    background-color: $navbar-background-secondary;
+                    fa-icon {
+                        color:$blue-lightest;
+                    }
+                }
             }
-        
-            &-active {
-                background-color: var(--clr-gray200);
-                border-left: 6px solid var(--clr-primary);
-        
-                svg,
-                p {
-                color: var(--clr-primary);
-                fill: var(--clr-primary);
+        }
+        /* USE IF WE HAVE SETTINGS
+        li.nav-item:last-child {
+            margin-top:auto; // Push all the way to the bottom
+        }
+        */
+        li.logo {
+            @extend .nav-item;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.3ch;
+            font-size:1rem;
+            a.nav-link {
+                .link-text{
+                    color: $navbar-text-secondary;
+                }
+                background-color: $navbar-background-secondary;
+                fa-icon {
+                    color:$blue-lightest;
                 }
             }
         }
     }
     
-    //close state
-    &-closed &__expand {
-    transform: rotatez(0deg);
-    }
+}
 
-    &-closed &__listitem p {
-    display: none;
+/* Large screens */
+//@include breakpoint("xlarge") {
+@media only screen and (min-width:767px) {
+    .navbar {
+        width: 5rem;
+        height: 100vh; // full height
+        transition: 200ms ease; // Simple animation
+
+        // Navbar Hover
+        &:hover {
+            width: 16rem;
+            ul.navbar-nav{
+                li.nav-item{
+                    a.nav-link {
+                        .link-text {
+                            display: block; // Show on hover
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+
+/* Small screens */
+@include breakpoint("small") {
+//@media only screen and (max-width:600px) {
+    .navbar {
+        bottom: 0;
+        width: 100vw; // full width
+        height: 4rem;
+
+        .logo {
+            display:none;
+        }
+
+        ul.navbar-nav {
+            flex-direction: row;
+            li.nav-item{
+                a.nav-link {
+                    justify-content: center;
+                    fa-icon {
+                        padding-bottom: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+

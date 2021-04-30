@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
-import {FooterComponent} from "./shared/footer/footer.component";
+import { FooterComponent } from "./shared/footer/footer.component";
 
-@Component({
+@Component ({
 	selector: "app-root",
 	templateUrl: "./app.component.html"
 })
