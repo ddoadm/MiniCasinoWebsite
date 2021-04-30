@@ -1,7 +1,14 @@
 # Mini Casino Website
+## Images
+![nc_casino_1](./app_screenshots/nc_casino_1.jpg?raw=true) 
+
+![nc_casino_2](./app_screenshots/nc_casino_2.jpg?raw=true)
+
+![nc_casino_3](./app_screenshots/nc_casino_3.jpg?raw=true)
+
+![nc_casino_4](./app_screenshots/nc_casino_4.jpg?raw=true)
 
 A mini casino website which contains;
-
 * Home page
   	* Containing a list of all `trending` games
 * Expandable Side menu
