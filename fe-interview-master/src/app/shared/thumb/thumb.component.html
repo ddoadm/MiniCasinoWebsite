@@ -1,0 +1,14 @@
+<!-- Game Thumbnail -->
+<li>
+    <span>
+        <a [routerLink]="['/game', game.slug]" routerLinkActive="active">
+            <img *ngIf="game.thumb; else noThumbElseBlock" src="{{game.thumb.url}}" alt="{{game.thumb.title}}">
+            
+            <ng-template #noThumbElseBlock>
+                <div class="thumb-background">
+                    <h2>{{ game.title }}</h2>
+                </div>
+            </ng-template>
+        </a>
+    </span>
+</li>

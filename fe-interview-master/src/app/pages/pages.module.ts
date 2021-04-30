@@ -5,7 +5,8 @@ import { BrowseProviderComponent } from './browse-provider/browse-provider.compo
 import { FormsModule } from '@angular/forms';
 import { AppPagesRoutingModule } from "./pages-routing.module";
 import { GameComponent } from './game/game.component';
-import { ThumbComponent } from '../thumb/thumb.component';
+import { ThumbComponent } from '../shared/thumb/thumb.component';
+//import { AppCookiesService } from '../services/app-cookies.service';
 
 const COMPONENTS = [
 	HomeComponent
@@ -22,6 +23,9 @@ const COMPONENTS = [
 		BrowseProviderComponent,
 		GameComponent,
 		ThumbComponent
+	],
+	providers: [
+		//AppCookiesService
 	],
 	exports: [
 		...COMPONENTS

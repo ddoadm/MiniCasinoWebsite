@@ -1,0 +1,18 @@
+<div class="footer-div" *ngIf="gamesData$">
+    <h1>Last Played!</h1>
+    <ul class="game-thumbs-ul">
+        <li *ngFor="let game of gamesData$ | async">
+            <span>
+                <a [routerLink]="['/game', game.slug]" routerLinkActive="active">
+                    <img *ngIf="game.thumb; else noThumbElseBlock" src="{{game.thumb.url}}" alt="{{game.thumb.title}}">
+                    
+                    <ng-template #noThumbElseBlock>
+                        <div class="thumb-background">
+                            <h2>{{ game.title }}</h2>
+                        </div>
+                    </ng-template>
+                </a>
+            </span>
+        </li> 
+    </ul>
+</div>

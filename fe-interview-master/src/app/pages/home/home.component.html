@@ -2,16 +2,16 @@
 	<!-- Trending Games -->
 	<div class="trending-div" *ngIf="trendingGamesData$">
 		<h1 class="header">Trending Games</h1>
-		<div class="game-thumb">
+		<ul class="game-thumbs-ul">
 			<app-thumb *ngFor="let game of trendingGamesData$ | async" [game]="game"></app-thumb>  
-		</div>
+		</ul>
 	</div>
 	<!-- Hot Games -->
 	<div class="hot-div" *ngIf="hotGamesData$">
 		<h1 class="header">Hot Games</h1>
-		<div class="game-thumbs-div">
+		<ul class="game-thumbs-ul">
 			<app-thumb *ngFor="let game of hotGamesData$ | async" [game]="game"></app-thumb>  
-		</div>
+		</ul>
 	</div>
 	<!-- All Games -->
 	<a class="button" routerLink="browse/all" routerLinkActive="active"> View all games! </a>

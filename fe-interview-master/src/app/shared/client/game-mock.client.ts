@@ -82,6 +82,18 @@ export class GameMockClient {
 		catchError(this.handleError));
 	}
 
+	getGameByIds$(ids: string[]): Observable<Game[]> {
+		return this.getAll$().pipe( 
+			map((games:Game[]) => games.filter(
+				(game:Game) => {
+					if (ids.indexOf(game.id) > -1) return true;
+					return false;
+				}
+			) 
+		),
+		catchError(this.handleError));
+	}
+
 	getProviders$(): Observable<Provider[]> {
 		return this.getAll$().pipe(
 			map((x:Game[]) => onlyUnique(x

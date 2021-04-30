@@ -1,10 +1,10 @@
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { Observable } from "rxjs";
-import { map, take } from 'rxjs/operators';
-import { ThumbComponent } from "src/app/thumb/thumb.component";
+import { map } from 'rxjs/operators';
+import { ThumbComponent } from "../../shared/thumb/thumb.component";
 
 import { GameMockClient, Game } from "../../shared";
-import { Store, Select } from '@ngxs/store';
+import { Store } from '@ngxs/store';
 
 const NAME_KEBAB = "app-home";
 

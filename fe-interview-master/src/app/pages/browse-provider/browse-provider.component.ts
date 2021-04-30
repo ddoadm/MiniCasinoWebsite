@@ -3,10 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subject, Subscription } from "rxjs";
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { GameFilterParams } from 'src/app/shared/client/game-filter-params.model';
-
 import { Provider } from 'src/app/shared/client/provider.model';
 import { GameMockClient, Game } from "../../shared";
-
+import { ThumbComponent } from "../../shared/thumb/thumb.component";
 
 @Component({
   selector: 'app-browse-provider',

@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable, Subject, Subscription } from "rxjs";
-import { debounceTime, distinctUntilChanged, take, map } from 'rxjs/operators';
-import { GameFilterParams } from 'src/app/shared/client/game-filter-params.model';
-
-import { Provider } from 'src/app/shared/client/provider.model';
+import { Subject, Subscription } from "rxjs";
 import { GameMockClient, Game } from "../../shared";
+import { AppCookiesService } from '../../services/app-cookies.service';
 
 @Component({
   selector: 'app-game',
@@ -21,17 +18,20 @@ export class GameComponent implements OnInit {
   // Subscriptions
   gameFilterSubscription: Subscription;
 
-  constructor(private router: Router, private route: ActivatedRoute, gameMockClient: GameMockClient) {
+  constructor(private router: Router, private route: ActivatedRoute, gameMockClient: GameMockClient, private appCookieService:AppCookiesService) {
     
     // Pipe used to filter games
     this.gameFilterSubscription = this.gameFilterSubject.subscribe((slug:string) => {
         gameMockClient.getGameBySlug$(this.slug).subscribe((game:Game| undefined) => this.game = game);
-        console.log(this.game)
+        console.log(this.game);
+
+        // Save cookie
+        appCookieService.AddGameInCookie(this.game?.id);
       } 
     )
    }
 
-   ngOnInit(): void {    
+  ngOnInit(): void {    
     // Filter Games
     this.slug = this.route.snapshot.paramMap.get('slug') as string;
     this.gameFilterSubject.next(this.slug);
@@ -40,6 +40,5 @@ export class GameComponent implements OnInit {
   ngOnDestroy() {
     // Unsubscribe
     this.gameFilterSubscription.unsubscribe();
-  }
-  
+  }  
 }

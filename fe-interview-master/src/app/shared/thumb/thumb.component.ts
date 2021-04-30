@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Game } from '../shared';
+import { Game } from '../client/game.model';
 
 @Component({
   selector: 'app-thumb',
