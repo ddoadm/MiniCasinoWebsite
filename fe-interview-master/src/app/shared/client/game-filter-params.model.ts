@@ -1,4 +1,4 @@
 export interface GameFilterParams {
-	searchText: string,
-    selectedProvider: string
+	searchText: string;
+    selectedProvider: string;
 }

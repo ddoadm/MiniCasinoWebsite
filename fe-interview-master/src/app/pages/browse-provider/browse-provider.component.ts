@@ -34,18 +34,18 @@ export class BrowseProviderComponent implements OnInit {
     this.gameFilterSubscription = this.gameFilterSubject.pipe(
       debounceTime(500), // Debounce used instead of throttleTime(500)
     ).subscribe((params: GameFilterParams) => {
-        this.gamesData$ = gameMockClient.getAllFiltered$(params.searchText, params.selectedProvider)
+        this.gamesData$ = gameMockClient.getAllFiltered$(params.searchText, params.selectedProvider);
       } 
-    )
+    );
 
     // Pipe used to filter provider selection based on search field
     this.providerFilterSubscription = this.providerFilterSubject.pipe(
       debounceTime(500), // Debounce used instead of throttleTime(500)
       distinctUntilChanged()
     ).subscribe(searchText => {
-        this.providers$ = gameMockClient.getProvidersBasedOnSearch$(searchText)
+        this.providers$ = gameMockClient.getProvidersBasedOnSearch$(searchText);
       } 
-    )
+    );
   }
 
   ngOnInit(): void {    
@@ -61,7 +61,7 @@ export class BrowseProviderComponent implements OnInit {
   }
   
   // Navigate to Browse-Component
-  selectedProviderChange(providerPath:string){
+  selectedProviderChange(providerPath: string) {
     this.router.navigate(["/browse", providerPath]);
 
     // Filter Games
@@ -70,7 +70,7 @@ export class BrowseProviderComponent implements OnInit {
   }
 
   // Search field update. Pass new searchText in searchTextUpdate pipe
-  onKeyUpEvent(event: any){
+  onKeyUpEvent(event: any) {
     // Filter Games
     this.gameFilterParams.searchText = event.target.value;
     this.gameFilterSubject.next(this.gameFilterParams);

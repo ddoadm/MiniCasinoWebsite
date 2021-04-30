@@ -28,7 +28,7 @@ export class AppState {
     }
 
     @Action(AddGame)
-    add ({ getState, patchState } : StateContext<AppStateModel>, { payload }:AddGame) {
+    add ({ getState, patchState } : StateContext<AppStateModel>, { payload }: AddGame) {
         const state = getState();
         patchState ({
             games: [...state.games, payload],

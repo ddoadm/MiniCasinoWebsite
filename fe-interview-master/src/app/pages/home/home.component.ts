@@ -26,10 +26,10 @@ export class HomeComponent {
 		// Observable
 		this.gamesData$ = gameMockClient.getAll$();		
 		this.trendingGamesData$ = this.gamesData$.pipe(
-			map((games:Game[]) => games.filter(g=>g.tag === "trending"))
+			map((games: Game[]) => games.filter(g => g.tag === "trending"))
 		);
 		this.hotGamesData$ = this.gamesData$.pipe(
-			map((games:Game[]) => games.filter(g=>g.tag === "hot"))
+			map((games: Game[]) => games.filter(g => g.tag === "hot"))
 		);
 		// To check out data in console
 		// observer = this.trendingGamesData$.subscribe((x:Game[]) => console.log(x));		

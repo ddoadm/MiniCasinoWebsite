@@ -9,6 +9,10 @@
 	background-size: cover;
 	position: relative;
 	margin-bottom: 1rem;
+	// Expand a little over the parents padding
+	top: -1rem;
+	left: -1rem;
+	width: calc(100% + 2rem);
 
 	.hero-text {
 		text-align: center;
